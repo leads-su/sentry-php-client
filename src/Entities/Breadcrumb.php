@@ -30,7 +30,7 @@ class Breadcrumb
             $category,
             $message,
             $metadata,
-            date(DATE_RFC3339)
+            time()
         );
     }
 
