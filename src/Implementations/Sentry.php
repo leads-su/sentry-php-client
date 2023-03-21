@@ -11,9 +11,12 @@ use Leads\Sentry\Entities\User;
  */
 class Sentry implements SentryInterface
 {
-    public function __construct(string $dsn, array $tags = [])
+    public function __construct(string $dsn, string $environment = 'production', array $tags = [])
     {
-        \Sentry\init(['dsn' => $dsn]);
+        \Sentry\init([
+            'dsn' => $dsn,
+            'environment' => $environment,
+        ]);
 
         foreach ($tags as $tagName => $tagValue) {
             $this->setTag($tagName, $tagValue);
@@ -36,7 +39,7 @@ class Sentry implements SentryInterface
      */
     public function setSeverityLevel(string $severityLevel): SentryInterface
     {
-        \Sentry\withScope(function (\Sentry\State\Scope $scope) use ($severityLevel): void {
+        \Sentry\configureScope(function (\Sentry\State\Scope $scope) use ($severityLevel): void {
             $scope->setLevel(new \Sentry\Severity($severityLevel));
         });
         return $this;
@@ -47,7 +50,7 @@ class Sentry implements SentryInterface
      */
     public function setTag(string $tagName, string $tagValue): SentryInterface
     {
-        \Sentry\withScope(function (\Sentry\State\Scope $scope) use ($tagName, $tagValue): void {
+        \Sentry\configureScope(function (\Sentry\State\Scope $scope) use ($tagName, $tagValue): void {
             $scope->setTag($tagName, $tagValue);
         });
         return $this;
@@ -58,7 +61,7 @@ class Sentry implements SentryInterface
      */
     public function setUser(User $user): SentryInterface
     {
-        \Sentry\withScope(function (\Sentry\State\Scope $scope) use ($user): void {
+        \Sentry\configureScope(function (\Sentry\State\Scope $scope) use ($user): void {
             $scope->setUser($user->getSentryUser());
         });
         return $this;

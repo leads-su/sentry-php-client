@@ -12,7 +12,7 @@ class Breadcrumb
 {
     /**
      * @param string $level из констант класса SeverityLevel
-     * @param string $category произвольное значения для указание модуля/категории события
+     * @param string $category произвольное значения для указания модуля/категории события
      * @param string|null $message человекочитаемое сообщение о событии
      * @param array $metadata словарь дополнительных данных
      *
