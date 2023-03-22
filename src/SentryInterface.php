@@ -55,11 +55,11 @@ interface SentryInterface
     //######################################################################
 
     /**
-     * Отправка исключения в Sentry
-     * @param \Exception $e
+     * Отправка исключения/ошибки в Sentry
+     * @param \Throwable $e
      * @return string
      */
-    public function captureException(\Exception $e): string;
+    public function captureException(\Throwable $e): string;
 
     /**
      * Отправка сообщения в Sentry

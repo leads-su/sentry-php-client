@@ -79,9 +79,9 @@ class Sentry implements SentryInterface
     /**
      * @inheritDoc
      */
-    public function captureException(\Exception $exception): string
+    public function captureException(\Throwable $e): string
     {
-        return strval(\Sentry\captureException($exception));
+        return strval(\Sentry\captureException($e));
     }
 
     /**
