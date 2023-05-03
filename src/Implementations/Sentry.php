@@ -11,11 +11,12 @@ use Leads\Sentry\Entities\User;
  */
 class Sentry implements SentryInterface
 {
-    public function __construct(string $dsn, string $environment = 'production', array $tags = [])
+    public function __construct(string $dsn, string $environment = 'production', string $release = '', array $tags = [])
     {
         \Sentry\init([
             'dsn' => $dsn,
             'environment' => $environment,
+            'release' => $release,
         ]);
 
         foreach ($tags as $tagName => $tagValue) {
