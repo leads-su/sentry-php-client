@@ -9,7 +9,7 @@
   "require": {
     "php": ">=7.3",
     "sentry/sdk": "3.3.*",
-    "fluent/logger": "v1.0.0"
+    "fluent/logger": "^v1.0"
   },
   "autoload": {
     "psr-4": {
