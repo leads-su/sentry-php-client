@@ -3,8 +3,9 @@
 namespace Leads\Sentry\Implementations\Fluentd;
 
 use Fluent\Logger\FluentLogger;
+use Leads\Sentry\SentryAbstract;
 
-class SentryFluend
+class SentryFluend extends SentryAbstract
 {
     public function __construct(
         string $dsn,
