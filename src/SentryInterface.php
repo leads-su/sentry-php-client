@@ -10,14 +10,6 @@ use Leads\Sentry\Entities\User;
 interface SentryInterface
 {
     /**
-     * Сменить DSN, до capture методов
-     *
-     * @param string $dsn
-     * @return $this
-     */
-    public function changeDsn(string $dsn): self;
-
-    /**
      * Установить уровень строгости оповещения
      *
      * @param string $severityLevel
