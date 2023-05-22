@@ -3,7 +3,9 @@
 namespace Leads\Sentry\Implementations\Fluentd;
 
 use GuzzleHttp\Promise\FulfilledPromise;
+use GuzzleHttp\Promise\PromiseInterface;
 use GuzzleHttp\Promise\RejectedPromise;
+use Sentry\Event;
 use Sentry\Options;
 use Sentry\Response;
 use Sentry\ResponseStatus;
@@ -23,7 +25,7 @@ class TransportFluent implements TransportInterface
         $this->payloadSerializer = $payloadSerializer;
     }
 
-    public function send(\Sentry\Event $event): \GuzzleHttp\Promise\PromiseInterface
+    public function send(Event $event): PromiseInterface
     {
         $dsn = $this->options->getDsn();
 
@@ -45,7 +47,7 @@ class TransportFluent implements TransportInterface
         }
     }
 
-    public function close(?int $timeout = null): \GuzzleHttp\Promise\PromiseInterface
+    public function close(?int $timeout = null): PromiseInterface
     {
         return new FulfilledPromise(true);
     }

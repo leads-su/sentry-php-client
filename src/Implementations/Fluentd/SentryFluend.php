@@ -4,6 +4,8 @@ namespace Leads\Sentry\Implementations\Fluentd;
 
 use Fluent\Logger\FluentLogger;
 use Leads\Sentry\SentryAbstract;
+use Sentry\ClientBuilder;
+use Sentry\SentrySdk;
 
 class SentryFluend extends SentryAbstract
 {
@@ -14,14 +16,14 @@ class SentryFluend extends SentryAbstract
         string $release = '',
         array $tags = []
     ) {
-        $client = \Sentry\ClientBuilder::create([
+        $client = ClientBuilder::create([
             'dsn' => $dsn,
             'environment' => $environment,
             'release' => $release,
         ]);
         $client->setTransportFactory(new TransportFluentFactory($fluent));
 
-        \Sentry\SentrySdk::init()->bindClient($client->getClient());
+        SentrySdk::init()->bindClient($client->getClient());
 
         foreach ($tags as $tagName => $tagValue) {
             $this->setTag($tagName, $tagValue);

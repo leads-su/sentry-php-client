@@ -3,8 +3,10 @@
 namespace Leads\Sentry\Implementations\Fluentd;
 
 use Fluent\Logger\FluentLogger;
+use Sentry\Options;
 use \Sentry\Serializer\PayloadSerializer;
 use \Sentry\Transport\TransportFactoryInterface;
+use Sentry\Transport\TransportInterface;
 
 class TransportFluentFactory implements TransportFactoryInterface
 {
@@ -13,7 +15,7 @@ class TransportFluentFactory implements TransportFactoryInterface
         $this->fluent = $fluent;
     }
 
-    public function create(\Sentry\Options $options): \Sentry\Transport\TransportInterface
+    public function create(Options $options): TransportInterface
     {
         return new TransportFluent(
             $options,
