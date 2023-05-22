@@ -1,40 +1,15 @@
 <?php
 
-namespace Leads\Sentry\Implementations;
+namespace Leads\Sentry;
 
 use Leads\Sentry\Entities\Breadcrumb;
-use Leads\Sentry\SentryInterface;
 use Leads\Sentry\Entities\User;
 
 /**
- * Реализация клиента Sentry
+ * Реализация основных методов Sentry клиента, конструирование остается на наследниках
  */
-class Sentry implements SentryInterface
+class SentryAbstract implements SentryInterface
 {
-    public function __construct(string $dsn, string $environment = 'production', string $release = '', array $tags = [])
-    {
-        \Sentry\init([
-            'dsn' => $dsn,
-            'environment' => $environment,
-            'release' => $release,
-        ]);
-
-        foreach ($tags as $tagName => $tagValue) {
-            $this->setTag($tagName, $tagValue);
-        }
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function changeDsn(string $dsn): SentryInterface
-    {
-        \Sentry\SentrySdk::getCurrentHub()->bindClient(
-            \Sentry\ClientBuilder::create(['dsn' => $dsn])->getClient()
-        );
-        return $this;
-    }
-
     /**
      * @inheritDoc
      */
