@@ -33,8 +33,8 @@ class TransportFluent implements TransportInterface
         $payload = json_decode($json, true);
 
         $tag = sprintf(
-            'sentry.%d.%s',
-            $dsn->getProjectId(),
+            'sentry.%s.%s',
+            $dsn->getProjectId(true),
             $dsn->getPublicKey()
         );
 
