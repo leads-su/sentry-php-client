@@ -8,6 +8,7 @@ use Leads\Sentry\Entities\User;
 use Sentry\Integration\EnvironmentIntegration;
 use Sentry\Integration\ErrorListenerIntegration;
 use Sentry\Integration\ExceptionListenerIntegration;
+use Sentry\Integration\FatalErrorListenerIntegration;
 use Sentry\Integration\FrameContextifierIntegration;
 use Sentry\Integration\IntegrationInterface;
 use Sentry\Integration\ModulesIntegration;
