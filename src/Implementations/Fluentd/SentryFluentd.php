@@ -7,7 +7,7 @@ use Leads\Sentry\SentryAbstract;
 use Sentry\ClientBuilder;
 use Sentry\SentrySdk;
 
-class SentryFluend extends SentryAbstract
+class SentryFluentd extends SentryAbstract
 {
     public function __construct(
         string $dsn,
