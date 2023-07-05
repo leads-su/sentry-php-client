@@ -6,7 +6,7 @@ use Leads\Sentry\Entities\IntegrationsOptions;
 use Leads\Sentry\SentryAbstract;
 
 /**
- * Реализация клиента SentryHttp
+ * Реализация клиента Sentry с транспортировкой событий через http
  */
 class SentryHttp extends SentryAbstract
 {

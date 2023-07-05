@@ -8,6 +8,9 @@ use Leads\Sentry\SentryAbstract;
 use Sentry\ClientBuilder;
 use Sentry\SentrySdk;
 
+/**
+ * Реализация клиента Sentry с транспортировкой событий через fluentd
+ */
 class SentryFluentd extends SentryAbstract
 {
     public function __construct(

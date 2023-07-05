@@ -8,6 +8,9 @@ use \Sentry\Serializer\PayloadSerializer;
 use \Sentry\Transport\TransportFactoryInterface;
 use Sentry\Transport\TransportInterface;
 
+/**
+ * Реализация фабрики транспорта событий через fluentd
+ */
 class TransportFluentFactory implements TransportFactoryInterface
 {
     public function __construct(FluentLogger $fluent)
@@ -15,6 +18,9 @@ class TransportFluentFactory implements TransportFactoryInterface
         $this->fluent = $fluent;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function create(Options $options): TransportInterface
     {
         return new TransportFluent(

@@ -9,7 +9,8 @@ use Sentry\Integration\ModulesIntegration;
 
 /**
  * Включение/отключение интеграций клиента Sentry
- * https://docs.sentry.io/platforms/php/integrations/
+ *
+ * @link https://docs.sentry.io/platforms/php/integrations/
  */
 class IntegrationsOptions
 {
