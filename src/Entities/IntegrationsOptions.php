@@ -2,34 +2,72 @@
 
 namespace Leads\Sentry\Entities;
 
+use Sentry\Integration\ErrorListenerIntegration;
+use Sentry\Integration\ExceptionListenerIntegration;
+use Sentry\Integration\FatalErrorListenerIntegration;
+use Sentry\Integration\ModulesIntegration;
+
 /**
  * Включение/отключение интеграций клиента Sentry
  * https://docs.sentry.io/platforms/php/integrations/
  */
 class IntegrationsOptions
 {
+    //**********************************************************************
+    // Интеграции автоматической обработки ошибок и неперехваченных исключений:
+    // - ExceptionListenerIntegration
+    // - ErrorListenerIntegration
+    // - FatalErrorListenerIntegration
+    //**********************************************************************
+
+    /**
+     * Установить вкл/выкл интеграций автоматической обработки ошибок и неперехваченных исключений
+     *  - ErrorListenerIntegration
+     *  - FatalErrorListenerIntegration
+     *
+     * @param bool $enable
+     * @return $this
+     */
     public function setAutoHandler(bool $enable): self
     {
         $this->autoHandler = $enable;
         return $this;
     }
 
+    /**
+     * Получить статус вкл/выкл интеграций автоматической обработки ошибок и неперехваченных исключений
+     *
+     * @return bool
+     */
     public function getAutoHandler(): bool
     {
         return $this->autoHandler;
     }
 
     //**********************************************************************
+    // Интеграция сбора инфомрации об используемых пакетах ModulesIntegration
+    //**********************************************************************
 
-    public function setPackages(bool $enable): self
+    /**
+     * Установить вкл/выкл интеграции сбора информации об используемых пакетах
+     *
+     * @param bool $enable
+     * @return $this
+     */
+    public function setPackageCollector(bool $enable): self
     {
-        $this->packages = $enable;
+        $this->packageCollector = $enable;
         return $this;
     }
 
-    public function getPackages(): bool
+    /**
+     * Получить статус вкл/выкл интеграции сбора информации об используемых пакетах
+     *
+     * @return bool
+     */
+    public function getPackageCollector(): bool
     {
-        return $this->packages;
+        return $this->packageCollector;
     }
 
     //######################################################################
@@ -37,5 +75,5 @@ class IntegrationsOptions
     //######################################################################
 
     private $autoHandler = true;
-    private $packages = true;
+    private $packageCollector = true;
 }
