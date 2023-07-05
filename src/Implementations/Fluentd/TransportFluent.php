@@ -13,6 +13,9 @@ use \Sentry\Serializer\PayloadSerializerInterface;
 use \Sentry\Transport\TransportInterface;
 use \Fluent\Logger\FluentLogger;
 
+/**
+ * Реализация транспорта событий в Sentry через fluentd
+ */
 class TransportFluent implements TransportInterface
 {
     public function __construct(
@@ -25,6 +28,9 @@ class TransportFluent implements TransportInterface
         $this->payloadSerializer = $payloadSerializer;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function send(Event $event): PromiseInterface
     {
         $dsn = $this->options->getDsn();
@@ -47,6 +53,9 @@ class TransportFluent implements TransportInterface
         }
     }
 
+    /**
+     * @inheritDoc
+     */
     public function close(?int $timeout = null): PromiseInterface
     {
         return new FulfilledPromise(true);
