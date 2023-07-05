@@ -101,7 +101,7 @@ class SentryAbstract implements SentryInterface
             $integrations[] = new FatalErrorListenerIntegration();
         }
 
-        if ($intOptions->getPackages()) {
+        if ($intOptions->getPackageCollector()) {
             $integrations[] = new ModulesIntegration();
         }
 
