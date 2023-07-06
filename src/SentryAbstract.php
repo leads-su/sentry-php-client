@@ -22,17 +22,6 @@ class SentryAbstract implements SentryInterface
     /**
      * @inheritDoc
      */
-    public function setSeverityLevel(string $severityLevel): SentryInterface
-    {
-        \Sentry\configureScope(function (\Sentry\State\Scope $scope) use ($severityLevel): void {
-            $scope->setLevel(new \Sentry\Severity($severityLevel));
-        });
-        return $this;
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function setTag(string $tagName, string $tagValue): SentryInterface
     {
         \Sentry\configureScope(function (\Sentry\State\Scope $scope) use ($tagName, $tagValue): void {
