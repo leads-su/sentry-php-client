@@ -10,16 +10,6 @@ use Leads\Sentry\Entities\User;
 interface SentryInterface
 {
     /**
-     * Установить уровень строгости оповещения
-     *
-     * @param string $severityLevel
-     * @return $this
-     *
-     * @see \Leads\Sentry\Entities\SeverityLevel
-     */
-    public function setSeverityLevel(string $severityLevel): self;
-
-    /**
      * Установить тег
      *
      * @param string $tagName
