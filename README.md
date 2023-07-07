@@ -26,8 +26,8 @@ SentryHttp  -->  SentryAbstract
 
 ## Транспортировка событий в Sentry
 
-Поддерживаться 2 вида транспортировки событий:
-* через `HTTP` - стандартный способ (поддерживается из коробки [sentry/sdk](https://packagist.org/packages/sentry/sdk))
+Доступно 2 вида транспортировки событий:
+* через `HTTP` - стандартный способ (поддерживается из коробки [sentry/sdk](https://packagist.org/packages/sentry/sdk)):
 ```bash
 use Leads\Sentry\Implementations\SentryHttp;
 use Leads\Sentry\Entities\IntegrationsOptions;
@@ -44,7 +44,7 @@ $sentryClient = new SentryHttp(
 );
 ```
 
-* через [fluentd/td-agent](https://docs.fluentd.org/) - реализован через пакет [fluent/logger](https://packagist.org/packages/fluent/logger) в данном проекте как более быстрое для клиентского кода и более устойчивое для сервера `Sentry` в одном инстансе
+* через [fluentd/td-agent](https://docs.fluentd.org/) - реализован через пакет [fluent/logger](https://packagist.org/packages/fluent/logger) в данном проекте как более быстрое для клиентского кода и более устойчивое для сервера `Sentry` в одном инстансе:
 ```bash
 use Fluent\Logger\FluentLogger;
 use Leads\Sentry\Implementations\SentryHttp;
